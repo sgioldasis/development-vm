@@ -1,5 +1,10 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+class VagrantPlugins::ProviderVirtualBox::Action::Network
+  def dhcp_server_matches_config?(dhcp_server, config)
+    true
+  end
+end
 
 require 'yaml'
 settings = YAML.load_file 'vagrant.yml'
@@ -20,7 +25,11 @@ Vagrant.configure("2") do |config|
   config.vm.network "private_network", type: "dhcp"
     
   # # Share folder
-  config.vm.synced_folder "./shared", "/home/vagrant/shared"
+  # config.vm.synced_folder "./shared", "/home/vagrant/shared"
+  config.vm.synced_folder ".", "/vagrant"
+
+  # Provisioner
+  provisioner = Vagrant::Util::Platform.windows? ? :guest_ansible : :ansible
 
   # Define settings for each node
   config.vm.define node_name do |node|
@@ -62,7 +71,7 @@ Vagrant.configure("2") do |config|
       vb.customize ["modifyvm", :id, "--hwvirtex", "on"]
       vb.customize ["modifyvm", :id, "--nestedpaging", "on"]
       vb.customize ["modifyvm", :id, "--accelerate2dvideo", "off"]
-      vb.customize ["modifyvm", :id, '--audio', 'pulse']
+      # vb.customize ["modifyvm", :id, '--audio', 'pulse']
       vb.customize ["modifyvm", :id, '--audiocontroller', 'ac97']
       vb.customize ["modifyvm", :id, "--audioin", "on"]
       vb.customize ["modifyvm", :id, "--audioout", "on"]
@@ -77,7 +86,8 @@ Vagrant.configure("2") do |config|
     node.ssh.insert_key = false
 
     # Call Ansible also passing it values needed for configuration
-    node.vm.provision "ansible" do |ansible|
+    # node.vm.provision "ansible" do |ansible|
+    node.vm.provision provisioner do |ansible|
       ansible.verbose = "v"
       ansible.playbook = "playbook.yml"
     #   ansible.extra_vars = {

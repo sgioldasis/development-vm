@@ -1,3 +1,4 @@
 .vagrant
 *.retry
 xxx/
+vagrant_ansible_inventory*

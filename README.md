@@ -4,9 +4,10 @@ Development VM with Vagrant and Ansible
 
 ## Prerequisites
 
-- Ansible
+- Ansible ???
 - Vagrant
 - vagrant plugin install vagrant-vbguest
+- vagrant plugin install vagrant-guest_ansible
 
 ## To do
 
