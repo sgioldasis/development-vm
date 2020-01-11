@@ -1,0 +1,26 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: yes
+  roles:
+    - { role: ansible-gcloud }
+
+- hosts: all
+  become: no
+  gather_facts: yes
+  roles:
+    - { role: ansible-pyenv }
+    - { role: ansible-vscode }
+# - hosts: all
+#   become: yes
+#   become_method: sudo
+#   gather_facts: no
+#   tasks:
+#     - name: Remove Initial Setup
+#       become: yes
+#       package:
+#         name: gnome-initial-setup
+#         state: absent
+#     # - name: Reboot
+#     #   reboot:
+#     #     reboot_timeout: 300
