@@ -1,6 +1,6 @@
 ---
 vm_box: timeless-systems/ubuntu-19.10-desktop-amd64
-vm_name: edp-dev
+vm_name: dev-vm
 vm_memory: 8192
 vm_gui: false
 vm_ip_prefix: 192.168.3
