@@ -15,4 +15,3 @@ https://github.com/vovimayhem/vagrant-guest_ansible
 ## To do
 
 - No 3d acceleration on first `vagrant up`
-- Network failure message on Windows

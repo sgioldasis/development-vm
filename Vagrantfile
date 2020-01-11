@@ -31,6 +31,7 @@ Vagrant.configure("2") do |config|
   # Provisioner
   provisioner = Vagrant::Util::Platform.windows? ? :guest_ansible : :ansible
 
+
   # Define settings for each node
   config.vm.define node_name do |node|
 
@@ -94,6 +95,12 @@ Vagrant.configure("2") do |config|
     #     node_ip_address: node_ip,
     # }
     end
+
+    node.trigger.after :up, :reload, :provision do |t|
+      t.name = "Shutdown after provisioning"
+      t.run = { :inline => "vagrant halt" }
+    end
+    
 
   end
 end
