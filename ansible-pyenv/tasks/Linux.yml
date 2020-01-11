@@ -1,0 +1,9 @@
+---
+
+- name: Install pyenv build requirements
+  become: true
+  package:
+    name: "{{ pyenv_build_requirements }}"
+
+- name: Install with Git
+  include_tasks: install_with_git.yml
