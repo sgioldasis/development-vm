@@ -2,3 +2,4 @@
 *.retry
 xxx/
 vagrant_ansible_inventory*
+.python-version
