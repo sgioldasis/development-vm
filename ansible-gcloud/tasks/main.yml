@@ -23,17 +23,18 @@
     upgrade: dist
   when: pkg_list.stderr != ""
 
-- name: Check if a reboot is required
-  stat: path=/var/run/reboot-required get_md5=no
-  register: reboot_flag
+# Cannot run reboot here with local Ansible provisioner 
+# - name: Check if a reboot is required
+#   stat: path=/var/run/reboot-required get_md5=no
+#   register: reboot_flag
 
-- name: Reboot the server is needed
-  reboot:
-    reboot_timeout: 300
-  when: reboot_flag.stat.exists == true
+# - name: Reboot the server is needed
+#   reboot:
+#     reboot_timeout: 300
+#   when: reboot_flag.stat.exists == true
 
-- debug:
-    msg: "Server is back up and running"
+# - debug:
+#     msg: "Server is back up and running"
 
 - name: Add official Docker APT repository (Ubuntu)
   apt_repository:
