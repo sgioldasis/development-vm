@@ -105,11 +105,11 @@ Vagrant.configure("2") do |config|
     end
 
     # Shut down after provisioning
-    # node.trigger.after :up, :reload, :provision do |t|
+    node.trigger.after :up, :reload, :provision do |t|
     # node.trigger.after :reload, :provision do |t|
-    #   t.name = "Shutdown after provisioning"
-    #   t.run = { :inline => "vagrant halt" }
-    # end
+      t.name = "Shutdown after provisioning"
+      t.run = { :inline => "vagrant halt" }
+    end
     
 
   end
