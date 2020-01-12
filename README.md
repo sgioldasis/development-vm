@@ -4,6 +4,8 @@ Development VM with Vagrant and Ansible
 
 ## Prerequisites
 
+This software has been tested on Linux, OSX and Windows platforms. Before you can use it, you first need to install the following for your specific platform:
+
 - [VirtualBox 6.0.14](https://www.virtualbox.org/wiki/Download_Old_Builds_6_0)
 - [Vagrant 2.2.6](https://www.vagrantup.com/downloads.html)
 
