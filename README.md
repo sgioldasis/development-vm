@@ -4,7 +4,6 @@ Development VM with Vagrant and Ansible
 
 ## Prerequisites
 
-- [Git](https://git-scm.com/downloads)
 - [VirtualBox 6.0.14](https://www.virtualbox.org/wiki/Download_Old_Builds_6_0)
 - [Vagrant 2.2.6](https://www.vagrantup.com/downloads.html)
 
@@ -20,9 +19,11 @@ You can find more info about these plugins in the links below:
 <https://gist.github.com/tknerr/291b765df23845e56a29>
 <https://github.com/vovimayhem/vagrant-guest_ansible>
 
+If you want to clone the repo you need to install [Git](https://git-scm.com/downloads) otherwise you can just download the repo as a ZIP file.
+
 ## Usage
 
-Clone (or download) this repo, cd to the folder and type `vagrant up` from your terminal. For example:
+Clone (or download) this repo to a local folder on your machine. Open your terminal, `cd` to the above folder and type `vagrant up`. For example if you are using Git you can type the following:
 
 ```bash
 git clone https://github.com/sgioldasis/development-vm.git
