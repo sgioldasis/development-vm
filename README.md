@@ -16,8 +16,8 @@ vagrant plugin install vagrant-guest_ansible
 
 You can find more info about these plugins in the links below:
 
-<https://gist.github.com/tknerr/291b765df23845e56a29>
-<https://github.com/vovimayhem/vagrant-guest_ansible>
+- <https://gist.github.com/tknerr/291b765df23845e56a29>
+- <https://github.com/vovimayhem/vagrant-guest_ansible>
 
 If you want to clone the repo you need to install [Git](https://git-scm.com/downloads) otherwise you can just download the repo as a ZIP file.
 
