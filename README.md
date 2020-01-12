@@ -97,7 +97,3 @@ Plugin `vagrant-hostmanager` has been known to cause the issue. You can uninstal
 ```bash
 vagrant plugin uninstall vagrant-hostmanager
 ```
-
-## To do
-
-- No 3d acceleration on first `vagrant up`
