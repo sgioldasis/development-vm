@@ -26,10 +26,11 @@ Vagrant.configure("2") do |config|
     
   # # Share folder
   # config.vm.synced_folder "./shared", "/home/vagrant/shared"
-  config.vm.synced_folder ".", "/vagrant"
+  config.vm.synced_folder ".", "/vagrant", type: "rsync"
 
   # Provisioner
-  provisioner = Vagrant::Util::Platform.windows? ? :guest_ansible : :ansible
+  # provisioner = Vagrant::Util::Platform.windows? ? :guest_ansible : :ansible
+  provisioner = :guest_ansible 
 
 
   # Define settings for each node
