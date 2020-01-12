@@ -32,7 +32,6 @@ Vagrant.configure("2") do |config|
   # provisioner = Vagrant::Util::Platform.windows? ? :guest_ansible : :ansible
   provisioner = :guest_ansible 
 
-
   # Define settings for each node
   config.vm.define node_name do |node|
 
@@ -73,6 +72,7 @@ Vagrant.configure("2") do |config|
       vb.customize ["modifyvm", :id, "--hwvirtex", "on"]
       vb.customize ["modifyvm", :id, "--nestedpaging", "on"]
       vb.customize ["modifyvm", :id, "--accelerate2dvideo", "off"]
+      vb.customize ["modifyvm", :id, "--cpus", 4]
 
       # Enable Audio
       if RUBY_PLATFORM =~ /darwin/
