@@ -11,16 +11,23 @@
   roles:
     - { role: ansible-pyenv }
     - { role: ansible-vscode }
+
 # - hosts: all
 #   become: yes
 #   become_method: sudo
 #   gather_facts: no
 #   tasks:
-#     - name: Remove Initial Setup
-#       become: yes
-#       package:
-#         name: gnome-initial-setup
-#         state: absent
-#     # - name: Reboot
-#     #   reboot:
-#     #     reboot_timeout: 300
+#   - name: shutdown hosts
+#     command: /sbin/shutdown -h now
+#     # when: ansible_facts['os_family'] == "Debian"
+#     ignore_errors: 'yes'  
+
+#   tasks:
+#   - name: Remove Initial Setup
+#     become: yes
+#     package:
+#       name: gnome-initial-setup
+#       state: absent
+#   - name: Reboot
+#     reboot:
+#       reboot_timeout: 300

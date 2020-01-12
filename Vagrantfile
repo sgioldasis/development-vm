@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
   node_number = 1
 
   # Private network required for nfs synced folder
-  config.vm.network "private_network", type: "dhcp"
+  # config.vm.network "private_network", type: "dhcp"
     
   # # Share folder
   # config.vm.synced_folder "./shared", "/home/vagrant/shared"
@@ -73,8 +73,15 @@ Vagrant.configure("2") do |config|
       vb.customize ["modifyvm", :id, "--hwvirtex", "on"]
       vb.customize ["modifyvm", :id, "--nestedpaging", "on"]
       vb.customize ["modifyvm", :id, "--accelerate2dvideo", "off"]
-      # vb.customize ["modifyvm", :id, '--audio', 'pulse']
-      vb.customize ["modifyvm", :id, '--audiocontroller', 'ac97']
+
+      # Enable Audio
+      if RUBY_PLATFORM =~ /darwin/
+        vb.customize ["modifyvm", :id, '--audio', 'coreaudio', '--audiocontroller', 'hda'] # choices: hda sb16 ac97
+      elsif RUBY_PLATFORM =~ /mingw|mswin|bccwin|cygwin|emx/
+        vb.customize ["modifyvm", :id, '--audio', 'dsound', '--audiocontroller', 'ac97']
+      else
+        vb.customize ["modifyvm", :id, '--audio', 'pulse']
+      end
       vb.customize ["modifyvm", :id, "--audioin", "on"]
       vb.customize ["modifyvm", :id, "--audioout", "on"]
 
